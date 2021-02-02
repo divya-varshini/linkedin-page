@@ -35,29 +35,25 @@ public class SkillsController {
 	}
 	
 	@GetMapping("/{id}")
-    public Optional<Skills> getASkill(@PathVariable Integer id ){
-        return skillsService.getSkill(id);
-    }
+    	public Optional<Skills> getASkill(@PathVariable Integer id ){
+        	return skillsService.getSkill(id);
+    	}
 	
 	@GetMapping
-    public List<Skills> getAllTheSkills(@RequestParam("user") String username){
-        return skillsService.getAllSkills(username);
-    }
+    	public List<Skills> getAllTheSkills(@RequestParam("user") String username){
+        	return skillsService.getAllSkills(username);
+    	}
 
-	//@GetMapping("/type")
-    //public Optional<Skills> getByType(@PathVariable String type ){
-      //  return skillsService.getByType(type);
-    //}
     
-    @PutMapping("/{id}")
-    public void updateSkill(@RequestBody SkillsSerializer skill, @PathVariable Integer id) {
-    	User user = userRepository.findByUsername(skill.getUser()).get();
-        Skills newSkill = new Skills(skill.getName(), skill.getLevel(), skill.getType(), user);
-        skillsService.addSkill(newSkill);
-    }
+    	@PutMapping("/{id}")
+    	public void updateSkill(@RequestBody SkillsSerializer skill, @PathVariable Integer id) {
+    		User user = userRepository.findByUsername(skill.getUser()).get();
+        	Skills newSkill = new Skills(skill.getName(), skill.getLevel(), skill.getType(), user);
+        	skillsService.addSkill(newSkill);
+    	}
     
-    @DeleteMapping("/{id}")
-    public void deleteSkill(@PathVariable Integer id) {
-        skillsService.deleteSkills(id);
-    }
+    	@DeleteMapping("/{id}")
+    	public void deleteSkill(@PathVariable Integer id) {
+        	skillsService.deleteSkills(id);
+    	}
 }
